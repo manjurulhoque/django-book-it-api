@@ -21,7 +21,7 @@ class Room(models.Model):
 
 
 class RoomImage(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="images")
     image = CloudinaryField("rooms")
 
     def __str__(self):
