@@ -17,3 +17,11 @@ class Room(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class RoomImage(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="rooms")
+
+    def __str__(self):
+        return self.room.name
