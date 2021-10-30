@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 
 class Room(models.Model):
@@ -26,3 +27,14 @@ class RoomImage(models.Model):
 
     def __str__(self):
         return self.room.name
+
+
+class Booking(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="bookings")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="my_bookings")
+    check_in_date = models.DateTimeField()
+    check_out_date = models.DateTimeField()
+    amount_paid = models.FloatField()
+    day_of_stay = models.IntegerField()
+    paid_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
