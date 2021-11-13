@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from bookings.models import Room, RoomImage
+from bookings.models import Room, RoomImage, Booking
 
 
 class RoomImageSerializer(serializers.ModelSerializer):
@@ -18,4 +18,10 @@ class RoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Room
+        fields = "__all__"
+
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
         fields = "__all__"
